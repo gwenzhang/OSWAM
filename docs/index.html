@@ -3,12 +3,103 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OSWAM</title>
+  <meta name="description" content="OSWAM: an effective world action model with one-step action generation for autonomous driving and embodied control. Research from PolyU VCLab.">
+  <meta name="theme-color" content="#8d1836">
+  <meta property="og:title" content="OSWAM — One-Step Action Generation">
+  <meta property="og:description" content="Structured imagination. One-step action. A world action model for autonomous driving and embodied control.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://gwenzhang.github.io/OSWAM/assets/social-preview.png">
+  <title>OSWAM | One-Step World Action Model</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="site-config.js"></script>
+  <script defer src="app.js"></script>
 </head>
 <body>
-  <h1>OSWAM</h1>
-  <p>An Effective World Action Model with One-Step Action Generation</p>
-  <p>Project page coming soon.</p>
-  <a href="https://github.com/gwenzhang/OSWAM">Code on GitHub</a>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar"><div class="nav-wrap">
+  <a class="wordmark" href="#" aria-label="OSWAM home"><span class="mark" aria-hidden="true">↗</span> OSWAM<span class="nav-tag"> / RESEARCH</span></a>
+  <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#method">Method</a><a href="#results">Results</a><a href="#demos">Demos</a><a class="nav-code" href="https://github.com/gwenzhang/OSWAM" target="_blank" rel="noopener">Code ↗</a></nav>
+</div></header>
+<main id="main">
+<section class="hero wrap">
+  <div class="eyebrow"><span class="dot"></span> POLYU VCLAB <span class="divider">/</span> PREPRINT 2026</div>
+  <p class="hero-name" aria-hidden="true">OS<span>WAM</span><span class="hero-period">.</span></p>
+  <h1>An Effective World Action Model<br class="desktop-break"> with <em>One-Step Action Generation</em></h1>
+  <p class="hero-intro">Structured imagination. One-step action.<br>Future-aware control for autonomous driving and embodied intelligence.</p>
+  <div id="authors" class="authors">Guowen Zhang<sup>*</sup> · Liyi Chen<sup>*</sup> · Xu Hu · Pengfei Wang<br>Jingfan Chen · Chenhang He · Lei Zhang<sup>†</sup></div>
+  <p class="affiliation">The Hong Kong Polytechnic University</p>
+  <p class="author-notes">* Equal contribution &nbsp; † Corresponding author</p>
+  <div class="hero-actions"><a class="button primary" href="https://github.com/gwenzhang/OSWAM" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5-7 7 7 7m8-14 7 7-7 7M14 3l-4 18"/></svg>Code on GitHub ↗</a><a id="paper-link" class="button" hidden>Read paper ↗</a><a class="button" href="#demos">Execution demos ↓</a><a class="text-link" href="#citation">BibTeX ↘</a></div>
+  <div class="hero-flow" aria-label="Inference: current observation, imagination tokens, one Action DiT denoising step, action chunk">
+    <div class="flow-item"><span class="flow-icon"><svg viewBox="0 0 32 32"><rect x="3" y="7" width="26" height="19" rx="3"/><circle cx="16" cy="16.5" r="6"/><path d="m9 7 2-4h10l2 4"/></svg></span><div><small>OBSERVE</small><strong>Current observation</strong></div></div>
+    <span class="flow-arrow" aria-hidden="true">→</span>
+    <div class="flow-item"><span class="token-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></span><div><small>IMAGINE</small><strong>Structured action prior</strong></div></div>
+    <span class="flow-arrow" aria-hidden="true">→</span>
+    <div class="flow-item accent"><span class="step-icon">1</span><div><small>ACT</small><strong>One denoising step</strong></div></div>
+  </div>
+  <p class="flow-note">Inference uses the current observation, task conditioning, and ego state for driving. No future video rollout.</p>
+</section>
+<div class="metrics-band"><div class="wrap metrics">
+  <div><strong>1<span> step</span></strong><p>Action denoising</p></div>
+  <div><strong>90.3</strong><p>NAVSIM PDMS</p></div>
+  <div><strong>90.00<span>%</span></strong><p>RoboTwin 2.0 average success</p></div>
+  <div><strong>40.81<span> ms</span></strong><p>RoboTwin · compiled · RTX 5090</p></div>
+</div></div>
+<section id="overview" class="section wrap overview">
+  <div><p class="eyebrow section-index">01 / THE IDEA</p><h2>A better starting point<br>for action.</h2></div>
+  <div class="overview-copy"><p class="lead">Can a world action model produce high-quality actions in a single denoising step?</p><p>Direct-policy world action models avoid generating future video at inference, yet still rely on iterative action denoising. Simply reducing the step count leaves too little opportunity to recover coherent actions from unstructured noise.</p><p><strong>OSWAM changes the initialization.</strong> Compact imagination tokens extract an observation-conditioned action prior from a pretrained Video DiT. A single Action DiT step refines that structured prior into an action sequence. During training, privileged-information distillation transfers future context from a teacher while keeping inference conditioned on the current observation.</p><details class="abstract"><summary>Read the full abstract <span>+</span></summary><p>Direct-policy World Action Models (WAM) have demonstrated the benefits of decoupling action generation from explicit future visual prediction for efficient inference in autonomous driving and embodied control. However, they still require tens of denoising steps to achieve competitive action quality, incurring substantial latency and hindering real-time deployment. Simply reducing the number of denoising steps will collapse the nonlinear multi-step denoising trajectory into coarse updates, substantially degrading action quality. To reduce the denoising steps while enabling real-time action generation, we present an effective world action model with one-step action generation, namely OSWAM, for autonomous driving and embodied control. We argue that it is the absence of structured action priors in random noise initialization that forces direct-policy WAMs to recover coherent action sequences through iterative denoising. Hence, we construct imagination tokens to initialize the diffusion process, providing physical priors and action-conditioned representations. We further introduce privileged information distillation with future conditioning to enhance future-aware action generation. As a result, OSWAM can efficiently and effectively generate high quality action in just one diffusion step. Our experiments demonstrate that OSWAM achieves comparable or even better results, in terms of both autonomous driving and embodied control, than direct-policy WAM and Joint-WAM that require tens of steps. It achieves approximately 3× speedup over direct-policy WAM baselines and supports real-time compiled inference with latency as low as 40ms on an NVIDIA RTX 5090 GPU.</p></details></div>
+</section>
+<section id="method" class="section tint"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow section-index">02 / METHOD</p><h2>Imagine structure. Refine once.</h2></div><p>A single Video DiT pass builds the prior.<br>A single Action DiT step produces the action.</p></div>
+  <figure class="paper-figure"><button class="figure-button" data-zoom="assets/framework.png" aria-label="Enlarge OSWAM architecture diagram"><img src="assets/framework.png" width="2400" height="1177" loading="lazy" alt="OSWAM architecture: text and ego encoders condition a Video DiT with action and scene imagination tokens. AIT yields the action prior for one-step Action DiT refinement, with auxiliary action and feature distillation losses during training."><span class="zoom-label">↗ Enlarge figure</span></button><figcaption>OSWAM architecture. Future video and privileged teacher features are used during training; inference retains only the current observation interface.</figcaption></figure>
+  <div class="method-grid"><article><span class="number">01</span><h3>Imagination tokens</h3><p>Action Imagination Tokens (AIT) provide a structured action prior. Scene Imagination Tokens (SIT) aggregate complementary scene context with a small token budget.</p></article><article><span class="number">02</span><h3>Future-aware distillation</h3><p>A privileged teacher attends to the full video horizon. Intermediate AIT feature alignment transfers future context to the student, with no teacher needed at inference.</p></article><article><span class="number">03</span><h3>One-step refinement</h3><p>The action prior is re-noised to an intermediate timestep and refined in one Action DiT denoising step. Role-aware 3D RoPE distinguishes the token groups.</p></article></div>
+</div></section>
+<section id="results" class="section wrap">
+  <div class="section-head"><div><p class="eyebrow section-index">03 / EXPERIMENTS</p><h2>Less denoising.<br>Competitive control.</h2></div><p>Evaluated on autonomous driving<br>and bimanual manipulation.</p></div>
+  <div class="results-tabs" role="tablist" aria-label="Benchmark results"><button id="tab-driving" role="tab" aria-selected="true" aria-controls="panel-driving" data-result="driving">Autonomous driving</button><button id="tab-embodied" role="tab" aria-selected="false" aria-controls="panel-embodied" tabindex="-1" data-result="embodied">Embodied control</button><button id="tab-efficiency" role="tab" aria-selected="false" aria-controls="panel-efficiency" tabindex="-1" data-result="efficiency">Inference efficiency</button></div>
+  <div id="panel-driving" class="result-panel" role="tabpanel" aria-labelledby="tab-driving" tabindex="0">
+    <div class="result-intro"><div><h3>NAVSIM <span>navtest</span></h3><p>Matches SimWAM's PDMS with one action step and a 3.01× speedup.</p></div><div class="result-highlight">90.3 <span>PDMS ↑</span></div></div>
+    <div class="table-scroll"><table><caption>Selected WAM planners from the paper's NAVSIM comparison.</caption><thead><tr><th scope="col">Method</th><th scope="col">Action steps ↓</th><th scope="col">PDMS ↑</th><th scope="col">Latency (ms) ↓</th></tr></thead><tbody><tr><th scope="row">DriveVA‡</th><td>2</td><td>90.5</td><td>593*</td></tr><tr><th scope="row">DriveWAM</th><td>10</td><td>90.1</td><td>1032</td></tr><tr><th scope="row">SimWAM†</th><td>10</td><td>90.3</td><td>410</td></tr><tr><th scope="row">Metis</th><td>10</td><td>89.1</td><td>440*</td></tr><tr class="ours"><th scope="row">OSWAM <span>Ours</span></th><td>1</td><td>90.3</td><td>136</td></tr></tbody></table></div>
+    <p class="table-note">NVIDIA H20 GPU / Intel Xeon Max 9468 CPU. † Without reinforcement learning. ‡ Without CARLA mix training. * Latency reproduced by the authors. PDMS: Predictive Driver Model Score.</p>
+  </div>
+  <div id="panel-embodied" class="result-panel" role="tabpanel" aria-labelledby="tab-embodied" tabindex="0" hidden>
+    <div class="result-intro"><div><h3>RoboTwin 2.0 <span>50 tasks</span></h3><p>2.80× faster than Fast-WAM, with a 1.83 percentage-point decrease in average success.</p></div><div class="result-highlight">90.00<span>% success ↑</span></div></div>
+    <div class="table-scroll"><table><caption>Selected methods without embodied pretraining (EPT), as reported in the paper.</caption><thead><tr><th scope="col">Method</th><th scope="col">Action steps ↓</th><th scope="col">Clean (%) ↑</th><th scope="col">Randomized (%) ↑</th><th scope="col">Average (%) ↑</th><th scope="col">Latency (ms) ↓</th></tr></thead><tbody><tr><th scope="row">Flash-WAM</th><td>1</td><td>82.56</td><td>80.26</td><td>81.41</td><td>609</td></tr><tr><th scope="row">Efficient-WAM</th><td>10</td><td>86.70</td><td>85.70</td><td>86.20</td><td>568</td></tr><tr><th scope="row">Fast-WAM</th><td>10</td><td>91.88</td><td>91.78</td><td>91.83</td><td>397</td></tr><tr><th scope="row">Light-WAM</th><td>—</td><td>76.40</td><td>76.30</td><td>76.40</td><td>107</td></tr><tr class="ours"><th scope="row">OSWAM <span>Ours</span></th><td>1</td><td>90.04</td><td>89.96</td><td>90.00</td><td>142</td></tr></tbody></table></div>
+    <p class="table-note">NVIDIA H20 GPU / Intel Xeon Max 9468 CPU. Average success over 100 trials per task in Clean and Randomized settings. Baseline values are reproduced as reported in the supplied manuscript.</p>
+  </div>
+  <div id="panel-efficiency" class="result-panel" role="tabpanel" aria-labelledby="tab-efficiency" tabindex="0" hidden>
+    <div class="result-intro"><div><h3>RTX 5090 <span>cached language context</span></h3><p>3.39× overall speedup on RoboTwin and 3.32× on NAVSIM before compilation.</p></div><div class="result-highlight">40.81<span>ms · RoboTwin compiled ↓</span></div></div>
+    <div class="table-scroll"><table><caption>Inference efficiency under the same environment.</caption><thead><tr><th scope="col">Benchmark</th><th scope="col">Method</th><th scope="col">Overall latency (ms) ↓</th><th scope="col">Compiled latency (ms) ↓</th></tr></thead><tbody><tr><th scope="row">RoboTwin 2.0</th><td>Fast-WAM</td><td>323.67</td><td>73.64</td></tr><tr class="ours"><th scope="row">RoboTwin 2.0</th><td>OSWAM</td><td>95.35</td><td>40.81</td></tr><tr><th scope="row">NAVSIM</th><td>SimWAM</td><td>330.80</td><td>90.53</td></tr><tr class="ours"><th scope="row">NAVSIM</th><td>OSWAM</td><td>99.70</td><td>52.64</td></tr></tbody></table></div>
+    <p class="table-note">Single NVIDIA RTX 5090 GPU / Intel Xeon Platinum 8470Q CPU, with cached language context. Compiled inference uses torch.compile and CUDA Graph optimization. These timings use a different setup from the H20 benchmark tables.</p>
+  </div>
+  <figure class="paper-figure tradeoff"><button class="figure-button" data-zoom="assets/tradeoff.png" aria-label="Enlarge efficiency and performance comparison"><img src="assets/tradeoff.png" width="2000" height="652" loading="lazy" alt="Latency versus performance on NAVSIM and RoboTwin 2.0. OSWAM achieves 90.3 PDMS at 136 ms and 90 percent average success at 142 ms."><span class="zoom-label">↗ Enlarge figure</span></button><figcaption>Efficiency–performance comparison from the manuscript. All latencies in this figure are measured on NVIDIA H20. EPT denotes embodied pretraining.</figcaption></figure>
+</section>
+<section id="demos" class="section demo-section"><div class="wrap">
+  <div class="section-head"><div><p class="eyebrow section-index">04 / EXECUTION DEMOS</p><h2>One model design.<br>Two worlds of action.</h2></div><p>Autonomous driving and embodied control.<br>Execution videos will be added here.</p></div>
+  <div class="demo-grid">
+    <article class="demo-card" id="driving-demo"><div class="demo-topline"><span>01 / AUTONOMOUS DRIVING</span><span class="demo-state">COMING SOON</span></div><div class="media-stage" id="driving-player"><div class="video-placeholder"><svg viewBox="0 0 320 130" aria-hidden="true"><path class="road" d="M65 130 130 0M255 130 190 0M160 120v-15m0-15V75m0-15V45m0-15V15"/><path class="trajectory" d="M155 115C145 80 170 75 172 28"/><rect x="143" y="88" width="32" height="25" rx="6"/></svg><span>Execution video coming soon</span></div></div><div class="demo-body"><h3>Autonomous driving</h3><p class="demo-caption">Current observations to future waypoints.</p><div class="demo-playlist" id="driving-playlist" aria-label="Driving video selection"></div></div></article>
+    <article class="demo-card" id="embodied-demo"><div class="demo-topline"><span>02 / EMBODIED CONTROL</span><span class="demo-state">COMING SOON</span></div><div class="media-stage" id="embodied-player"><div class="video-placeholder"><svg viewBox="0 0 320 130" aria-hidden="true"><path class="road" d="M30 113h260M56 110V94l29-34 40 12M264 110V94l-29-34-40 12"/><path class="trajectory" d="m125 72 12-9 10 14m48-5-12-9-10 14"/><circle cx="85" cy="60" r="8"/><circle cx="235" cy="60" r="8"/><rect x="146" y="87" width="28" height="26" rx="3"/></svg><span>Execution video coming soon</span></div></div><div class="demo-body"><h3>Embodied control</h3><p class="demo-caption">Visual observations to coordinated actions.</p><div class="demo-playlist" id="embodied-playlist" aria-label="Embodied video selection"></div></div></article>
+  </div>
+  <p class="demo-footnote">The illustrations above are placeholders, not execution results. Benchmark results are reported separately.</p>
+</div></section>
+<section class="section wrap qualitative">
+  <div><p class="eyebrow section-index">05 / QUALITATIVE RESULTS</p><h2>Coherent trajectories<br>in one step.</h2><p>Selected NAVSIM examples from the manuscript compare <strong>one-step SimWAM</strong> and <strong>one-step OSWAM</strong>. OSWAM produces smoother trajectories in turns and interactions with surrounding agents.</p><div class="legend"><span><i class="line orange"></i> SimWAM</span><span><i class="line teal"></i> OSWAM</span><span><i class="line dashed"></i> Ground truth</span></div><p class="table-note">NC: no at-fault collision.<br>DAC: drivable area compliance.<br>Static qualitative examples; not execution videos.</p></div>
+  <figure class="paper-figure"><button class="figure-button" data-zoom="assets/qualitative.png" aria-label="Enlarge qualitative driving comparisons"><img src="assets/qualitative.png" width="1155" height="2000" loading="lazy" alt="Six driving examples comparing current front-camera observations, one-step SimWAM trajectories, and one-step OSWAM trajectories. OSWAM satisfies NC and DAC in the shown cases."><span class="zoom-label">↗ Enlarge figure</span></button><figcaption>One-step trajectory comparisons on NAVSIM v1.</figcaption></figure>
+</section>
+<section id="citation" class="section tint"><div class="wrap citation-grid"><div><p class="eyebrow section-index">06 / CITE THIS WORK</p><h2>BibTeX</h2><p>Use this preprint citation.<br>Publication metadata will be updated when available.</p></div><div class="citation-box"><button id="copy-citation" class="copy-button">Copy BibTeX</button><pre><code id="bibtex">@misc{zhang2026oswam,
+  title = {OSWAM: An Effective World Action Model
+           with One-Step Action Generation},
+  author = {Guowen Zhang and Liyi Chen and Xu Hu and
+            Pengfei Wang and Jingfan Chen and
+            Chenhang He and Lei Zhang},
+  year = {2026},
+  howpublished = {Preprint},
+  url = {https://github.com/gwenzhang/OSWAM}
+}</code></pre><p id="copy-status" role="status" class="sr-only"></p></div></div></section>
+</main>
+<footer class="wrap footer"><div class="lab-brand"><img src="assets/polyu-logo.png" alt="The Hong Kong Polytechnic University" width="64" height="64" loading="lazy"><img src="assets/vclab-logo.jpg" alt="PolyU Visual Computing Lab" width="88" height="64" loading="lazy"><div><strong>Visual Computing Lab</strong><span>The Hong Kong Polytechnic University</span></div></div><div class="footer-links"><a href="mailto:guowen.zhang@connect.polyu.hk">Contact ↗</a><a href="https://github.com/gwenzhang/OSWAM" target="_blank" rel="noopener">GitHub ↗</a><a href="#">Back to top ↑</a></div></footer>
+<dialog id="figure-dialog" aria-label="Enlarged research figure"><div class="dialog-toolbar"><span>Research figure</span><button id="close-figure" aria-label="Close enlarged figure">Close ×</button></div><img id="zoom-image" alt=""></dialog>
+<noscript><p class="wrap">JavaScript enables benchmark tabs, enlarged figures, and video playlists. The overview, methods, NAVSIM results, and citation remain available above.</p></noscript>
 </body>
 </html>
