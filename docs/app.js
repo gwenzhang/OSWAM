@@ -132,7 +132,8 @@
       }
       stage.append(video);
       card.querySelector('h3').textContent = item.title || (group === 'driving' ? 'Autonomous driving' : 'Embodied control');
-      card.querySelector('.demo-caption').textContent = item.caption || '';
+      const caption = card.querySelector('.demo-caption');
+      if (caption) caption.textContent = item.caption || '';
       playlist.querySelectorAll('button').forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
       video.addEventListener('play', () => document.querySelectorAll('video').forEach(other => { if (other !== video) other.pause(); }));
     }

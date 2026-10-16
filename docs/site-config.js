@@ -39,23 +39,23 @@ window.OSWAM_CONFIG = {
         "oswamSeconds": 17.55
       },
       {
-        "title": "Object into drawer \u00b7 01",
-        "caption": "Independent runs with similar initial object positions \u00b7 Fast-WAM episode 10 / OSWAM episode 12 \u00b7 Checkpoints 10000 / 6000. OSWAM placement checked in both camera views.",
-        "src": "assets/videos/drawer-01.mp4?v=matched-20261016",
-        "poster": "assets/videos/drawer-01.jpg?v=matched-20261016",
-        "type": "video/mp4",
-        "speed": 1,
-        "baselineSeconds": 18.35,
-        "oswamSeconds": 14.2
-      },
-      {
-        "title": "Object into drawer \u00b7 02",
-        "caption": "Independent runs with similar initial object positions \u00b7 Fast-WAM episode 4 / OSWAM episode 18 \u00b7 Checkpoints 10000 / 6000. OSWAM placement checked in both camera views.",
-        "src": "assets/videos/drawer-02.mp4?v=matched-20261016",
-        "poster": "assets/videos/drawer-02.jpg?v=matched-20261016",
+        "title": "Object into drawer \u00b7 Bottom drawer",
+        "caption": "Bottom drawer on both sides \u00b7 Similar initial object positions \u00b7 Fast-WAM episode 4 / OSWAM episode 0 \u00b7 Checkpoints 10000 / 6000. Both placements visually checked in two camera views; independent runs.",
+        "src": "assets/videos/drawer-01.mp4?v=drawer-layer-20261016",
+        "poster": "assets/videos/drawer-01.jpg?v=drawer-layer-20261016",
         "type": "video/mp4",
         "speed": 1,
         "baselineSeconds": 18.55,
+        "oswamSeconds": 16.8
+      },
+      {
+        "title": "Object into drawer \u00b7 Middle drawer",
+        "caption": "Middle drawer on both sides \u00b7 Similar initial object positions \u00b7 Fast-WAM episode 20 / OSWAM episode 18 \u00b7 Checkpoints 10000 / 6000. Both placements visually checked in two camera views; independent runs.",
+        "src": "assets/videos/drawer-02.mp4?v=drawer-layer-20261016",
+        "poster": "assets/videos/drawer-02.jpg?v=drawer-layer-20261016",
+        "type": "video/mp4",
+        "speed": 1,
+        "baselineSeconds": 20.8,
         "oswamSeconds": 13.15
       }
     ]
