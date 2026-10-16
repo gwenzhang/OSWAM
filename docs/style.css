@@ -53,3 +53,9 @@
 .playback-switch button:active{background:#ad294b}
 .playback-switch button:focus-visible{outline:2px solid #f0b4c7;outline-offset:2px}
 @media(max-width:640px){.playback-controls>span{flex-basis:100%;font-size:11px}.playback-switch{width:100%}.playback-switch button{flex:1;font-size:12px}}
+
+/* Five headline metrics, with a balanced final row on small screens. */
+.metrics{grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.metrics p{padding-inline:4px}
+@media(max-width:900px) and (min-width:641px){.metrics strong{font-size:29px}.metrics p{font-size:10px}}
+@media(max-width:640px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}.metrics>div:nth-child(even){border-right:0}.metrics>div:last-child{grid-column:1/-1}}
