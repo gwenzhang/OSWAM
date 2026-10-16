@@ -28,14 +28,14 @@
 .playback-controls>span{font-size:12px;color:#e4d7e0;margin-right:auto}
 .playback-controls button{border:1px solid #766172;background:transparent;color:#e4d7e0;border-radius:5px;padding:7px 12px;font-size:11px}
 .playback-controls button[aria-pressed=true]{background:#d8f2d0;color:#254d24;border-color:#d8f2d0}
-.comparison-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
-.comparison-summary>div{padding:15px;border:1px solid #524653;border-radius:7px}
-.comparison-summary strong{font-size:27px;line-height:1.3;display:block;letter-spacing:-.8px}
-.comparison-summary span{display:block;color:#c4b4c2;font-size:10px;margin-top:5px}
-.comparison-summary .student,.comparison-summary .saving{color:#b8e9ac;border-color:#52704d;background:#263024}
+
+
+
+
+
 .inference-note{margin-top:19px;color:#e0d5df;font-size:12px;line-height:1.8}
 .inference-note a{color:#eeb8ce;text-decoration:underline;text-underline-offset:3px}
-@media(max-width:640px){.comparison-summary{gap:6px}.comparison-summary>div{padding:9px}.comparison-summary strong{font-size:20px}.comparison-summary span{font-size:9px}.playback-controls>span{font-size:10px}.playback-controls button{font-size:10px;padding:6px 9px}}
+@media(max-width:640px){.playback-controls>span{font-size:10px}.playback-controls button{font-size:10px;padding:6px 9px}}
 @media(min-width:641px) and (max-width:900px){#demos .section-head{display:block}#demos .section-head>p{margin-top:16px}}
 
 /* Keep the arrow independent of font metrics and align the wordmark optically. */

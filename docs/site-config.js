@@ -19,43 +19,43 @@ window.OSWAM_CONFIG = {
     ],
     "embodied": [
       {
-        "title": "Bread into bowl · 01",
-        "caption": "Selected independent recordings · Episode 18 · Fast-WAM checkpoint 4000 / OSWAM checkpoint 4000. Recording duration is not model inference latency.",
-        "src": "assets/videos/bread-01.mp4",
-        "poster": "assets/videos/bread-01.jpg",
+        "title": "Bread into bowl \u00b7 01",
+        "caption": "Independent runs with similar initial object positions \u00b7 Fast-WAM episode 7 / OSWAM episode 18 \u00b7 Checkpoints 4000 / 4000. OSWAM placement checked in both camera views.",
+        "src": "assets/videos/bread-01.mp4?v=matched-20261016",
+        "poster": "assets/videos/bread-01.jpg?v=matched-20261016",
         "type": "video/mp4",
         "speed": 1,
-        "baselineSeconds": 28.25,
-        "oswamSeconds": 16.0
+        "baselineSeconds": 25,
+        "oswamSeconds": 16
       },
       {
-        "title": "Bread into bowl · 02",
-        "caption": "Selected independent recordings · Episode 0 · Fast-WAM checkpoint 4000 / OSWAM checkpoint 4000. Recording duration is not model inference latency.",
-        "src": "assets/videos/bread-02.mp4",
-        "poster": "assets/videos/bread-02.jpg",
+        "title": "Bread into bowl \u00b7 02",
+        "caption": "Independent runs with similar initial object positions \u00b7 Fast-WAM episode 0 / OSWAM episode 0 \u00b7 Checkpoints 4000 / 4000. OSWAM placement checked in both camera views.",
+        "src": "assets/videos/bread-02.mp4?v=matched-20261016",
+        "poster": "assets/videos/bread-02.jpg?v=matched-20261016",
         "type": "video/mp4",
         "speed": 1,
         "baselineSeconds": 26.1,
         "oswamSeconds": 17.55
       },
       {
-        "title": "Object into drawer · 01",
-        "caption": "Selected independent recordings · Episode 19 · Fast-WAM checkpoint 10000 / OSWAM checkpoint 6000. Recording duration is not model inference latency.",
-        "src": "assets/videos/drawer-01.mp4",
-        "poster": "assets/videos/drawer-01.jpg",
+        "title": "Object into drawer \u00b7 01",
+        "caption": "Independent runs with similar initial object positions \u00b7 Fast-WAM episode 10 / OSWAM episode 12 \u00b7 Checkpoints 10000 / 6000. OSWAM placement checked in both camera views.",
+        "src": "assets/videos/drawer-01.mp4?v=matched-20261016",
+        "poster": "assets/videos/drawer-01.jpg?v=matched-20261016",
         "type": "video/mp4",
         "speed": 1,
-        "baselineSeconds": 20.85,
-        "oswamSeconds": 13.3
+        "baselineSeconds": 18.35,
+        "oswamSeconds": 14.2
       },
       {
-        "title": "Object into drawer · 02",
-        "caption": "Selected independent recordings · Episode 18 · Fast-WAM checkpoint 10000 / OSWAM checkpoint 6000. Recording duration is not model inference latency.",
-        "src": "assets/videos/drawer-02.mp4",
-        "poster": "assets/videos/drawer-02.jpg",
+        "title": "Object into drawer \u00b7 02",
+        "caption": "Independent runs with similar initial object positions \u00b7 Fast-WAM episode 4 / OSWAM episode 18 \u00b7 Checkpoints 10000 / 6000. OSWAM placement checked in both camera views.",
+        "src": "assets/videos/drawer-02.mp4?v=matched-20261016",
+        "poster": "assets/videos/drawer-02.jpg?v=matched-20261016",
         "type": "video/mp4",
         "speed": 1,
-        "baselineSeconds": 19.4,
+        "baselineSeconds": 18.55,
         "oswamSeconds": 13.15
       }
     ]

@@ -2,18 +2,20 @@
   {
     "id": "bread-01",
     "task": "place_bread_in_bowl",
-    "episode": 18,
+    "fastwam_episode": 7,
+    "oswam_episode": 18,
+    "pairing": "Visually similar initial object location and orientation; independent recordings, not identical initial states.",
     "playback_speed": 1,
-    "duration_seconds": 28.25,
-    "shorter_recording_percent": 43.36,
+    "duration_seconds": 25.0,
+    "shorter_recording_percent": 36.0,
     "output": "bread-01.mp4",
     "sources": [
       {
         "model": "Fast-WAM",
         "checkpoint": 4000,
-        "path": "results/fastwam/place_bread_in_bowl-step4000/episode18/camera/color/cam_high.mp4",
-        "duration_seconds": 28.25,
-        "sha256": "fbcc10b23f241a4f747294cc179e9a171f9999be70bb90117e52bdea7a44b567"
+        "path": "results/fastwam/place_bread_in_bowl-step4000/episode7/camera/color/cam_high.mp4",
+        "duration_seconds": 25.0,
+        "sha256": "fcf69cce66f3570578c839d744e82db909c0dbf18996a462bdd9419533c9babc"
       },
       {
         "model": "OSWAM",
@@ -23,12 +25,19 @@
         "sha256": "94b52caa54b3ce4f975465574767904436a3ff53cf3b1069d7b4665c0902d6f1"
       }
     ],
-    "editing": "Full uncropped 640x480 sources at original 20 fps and 1x speed; synchronized source starts; shorter source holds its final frame with end label and stopped source timer. No action cuts or audio. Selected independent runs, not a latency benchmark."
+    "editing": "Full uncropped 640x480 sources at original 20 fps and 1x speed; synchronized source starts; shorter source holds its final frame with end label and stopped source timer. No action cuts or audio. Selected independent runs, not a latency benchmark.",
+    "visual_review": {
+      "oswam_placement": "Both views checked: released into target container and remains there at recording end.",
+      "method": "Throughout at 1-second intervals plus finer end/release samples.",
+      "initial_state": "Visually matched approximate object position relative to target and orientation; no image alignment or spatial edits."
+    }
   },
   {
     "id": "bread-02",
     "task": "place_bread_in_bowl",
-    "episode": 0,
+    "fastwam_episode": 0,
+    "oswam_episode": 0,
+    "pairing": "Visually similar initial object location and orientation; independent recordings, not identical initial states.",
     "playback_speed": 1,
     "duration_seconds": 26.1,
     "shorter_recording_percent": 32.76,
@@ -49,49 +58,63 @@
         "sha256": "613ecacd5298aab260988637ec182f59c2f344abf0bba9b6773c16b54c31ad27"
       }
     ],
-    "editing": "Full uncropped 640x480 sources at original 20 fps and 1x speed; synchronized source starts; shorter source holds its final frame with end label and stopped source timer. No action cuts or audio. Selected independent runs, not a latency benchmark."
+    "editing": "Full uncropped 640x480 sources at original 20 fps and 1x speed; synchronized source starts; shorter source holds its final frame with end label and stopped source timer. No action cuts or audio. Selected independent runs, not a latency benchmark.",
+    "visual_review": {
+      "oswam_placement": "Both views checked: released into target container and remains there at recording end.",
+      "method": "Throughout at 1-second intervals plus finer end/release samples.",
+      "initial_state": "Visually matched approximate object position relative to target and orientation; no image alignment or spatial edits."
+    }
   },
   {
     "id": "drawer-01",
     "task": "place_in_drawer",
-    "episode": 19,
+    "fastwam_episode": 10,
+    "oswam_episode": 12,
+    "pairing": "Visually similar initial object location and orientation; independent recordings, not identical initial states.",
     "playback_speed": 1,
-    "duration_seconds": 20.85,
-    "shorter_recording_percent": 36.21,
+    "duration_seconds": 18.35,
+    "shorter_recording_percent": 22.62,
     "output": "drawer-01.mp4",
     "sources": [
       {
         "model": "Fast-WAM",
         "checkpoint": 10000,
-        "path": "results/fastwam/place_in_drawer-step10000/episode19/camera/color/cam_high.mp4",
-        "duration_seconds": 20.85,
-        "sha256": "73abc94e46ee31a9c6cd1e7675e87061cfca689ab008e63ab61e1b2df40996be"
+        "path": "results/fastwam/place_in_drawer-step10000/episode10/camera/color/cam_high.mp4",
+        "duration_seconds": 18.35,
+        "sha256": "ae69eb4f8533ab68cc782ba0ed025004b1e2f5df1a7c5f473a716c76ce3b191b"
       },
       {
         "model": "OSWAM",
         "checkpoint": 6000,
-        "path": "results/fastwam_student/step6000/place_in_drawer/episode19/camera/color/cam_high.mp4",
-        "duration_seconds": 13.3,
-        "sha256": "e7e194ecd900302342daf35892a240f990d451e438a321f7d329b13948faae34"
+        "path": "results/fastwam_student/step6000/place_in_drawer/episode12/camera/color/cam_high.mp4",
+        "duration_seconds": 14.2,
+        "sha256": "6bda77bfd58bf05a871283193336435ca5de8300b3dccc670fcc8478153dfc38"
       }
     ],
-    "editing": "Full uncropped 640x480 sources at original 20 fps and 1x speed; synchronized source starts; shorter source holds its final frame with end label and stopped source timer. No action cuts or audio. Selected independent runs, not a latency benchmark."
+    "editing": "Full uncropped 640x480 sources at original 20 fps and 1x speed; synchronized source starts; shorter source holds its final frame with end label and stopped source timer. No action cuts or audio. Selected independent runs, not a latency benchmark.",
+    "visual_review": {
+      "oswam_placement": "Both views checked: released into target container and remains there at recording end.",
+      "method": "Throughout at 1-second intervals plus finer end/release samples.",
+      "initial_state": "Visually matched approximate object position relative to target and orientation; no image alignment or spatial edits."
+    }
   },
   {
     "id": "drawer-02",
     "task": "place_in_drawer",
-    "episode": 18,
+    "fastwam_episode": 4,
+    "oswam_episode": 18,
+    "pairing": "Visually similar initial object location and orientation; independent recordings, not identical initial states.",
     "playback_speed": 1,
-    "duration_seconds": 19.4,
-    "shorter_recording_percent": 32.22,
+    "duration_seconds": 18.55,
+    "shorter_recording_percent": 29.11,
     "output": "drawer-02.mp4",
     "sources": [
       {
         "model": "Fast-WAM",
         "checkpoint": 10000,
-        "path": "results/fastwam/place_in_drawer-step10000/episode18/camera/color/cam_high.mp4",
-        "duration_seconds": 19.4,
-        "sha256": "5edc664710982a31d7b30a0d6da7b072dcb3788fff51d51052aac21fb5e338f2"
+        "path": "results/fastwam/place_in_drawer-step10000/episode4/camera/color/cam_high.mp4",
+        "duration_seconds": 18.55,
+        "sha256": "9102478f1bc919fdc9aca3afe41954ab98f6874f88c55daf07fa6d29f6c33bad"
       },
       {
         "model": "OSWAM",
@@ -101,6 +124,11 @@
         "sha256": "eece00849dfe156d993b7f1c25dfe3c3dc2776d3a26472d7cc3d8f11ca3981c3"
       }
     ],
-    "editing": "Full uncropped 640x480 sources at original 20 fps and 1x speed; synchronized source starts; shorter source holds its final frame with end label and stopped source timer. No action cuts or audio. Selected independent runs, not a latency benchmark."
+    "editing": "Full uncropped 640x480 sources at original 20 fps and 1x speed; synchronized source starts; shorter source holds its final frame with end label and stopped source timer. No action cuts or audio. Selected independent runs, not a latency benchmark.",
+    "visual_review": {
+      "oswam_placement": "Both views checked: released into target container and remains there at recording end.",
+      "method": "Throughout at 1-second intervals plus finer end/release samples.",
+      "initial_state": "Visually matched approximate object position relative to target and orientation; no image alignment or spatial edits."
+    }
   }
 ]

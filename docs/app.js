@@ -131,19 +131,6 @@
         const track = document.createElement('track'); track.kind = 'captions'; track.src = safeUrl(item.captions); track.srclang = item.captionsLang || 'en'; track.label = item.captionsLabel || 'English'; video.append(track);
       }
       stage.append(video);
-      if (group === 'embodied') {
-        const summary = card.querySelector('.comparison-summary');
-        summary.replaceChildren();
-        if (item.baselineSeconds && item.oswamSeconds) {
-          const percent = Math.round((1-item.oswamSeconds/item.baselineSeconds)*100);
-          for (const [label,value,cls] of [['Fast-WAM source recording',item.baselineSeconds.toFixed(2)+' s','baseline'],['OSWAM source recording',item.oswamSeconds.toFixed(2)+' s','student'],['Shorter recording',percent+'%','saving']]) {
-            const box = document.createElement('div'); box.className = cls;
-            const number = document.createElement('strong'); number.textContent=value;
-            const name = document.createElement('span'); name.textContent=label;
-            box.append(number,name); summary.append(box);
-          }
-        }
-      }
       card.querySelector('h3').textContent = item.title || (group === 'driving' ? 'Autonomous driving' : 'Embodied control');
       card.querySelector('.demo-caption').textContent = item.caption || '';
       playlist.querySelectorAll('button').forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
