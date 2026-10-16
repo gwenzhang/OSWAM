@@ -37,3 +37,19 @@
 .inference-note a{color:#eeb8ce;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:640px){.comparison-summary{gap:6px}.comparison-summary>div{padding:9px}.comparison-summary strong{font-size:20px}.comparison-summary span{font-size:9px}.playback-controls>span{font-size:10px}.playback-controls button{font-size:10px;padding:6px 9px}}
 @media(min-width:641px) and (max-width:900px){#demos .section-head{display:block}#demos .section-head>p{margin-top:16px}}
+
+/* Keep the arrow independent of font metrics and align the wordmark optically. */
+.wordmark{line-height:1;white-space:nowrap}
+.mark{flex-shrink:0;line-height:0}
+.mark svg{display:block;width:66%;height:66%;fill:none;stroke:currentColor;stroke-width:2.8;stroke-linecap:square;stroke-linejoin:miter}
+.wordmark-name,.nav-tag{line-height:1;position:relative;top:1px}
+
+/* A high-contrast, touch-friendly speed selector matching the burgundy brand. */
+.playback-controls{gap:12px}
+.playback-switch{display:inline-flex;gap:4px;padding:4px;background:#211d23;border:1px solid #594952;border-radius:12px}
+.playback-switch button{appearance:none;-webkit-appearance:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:110px;margin:0;padding:10px 16px;border:1px solid transparent;border-radius:8px;background:transparent;color:#d9cdd4;font-size:12px;font-weight:600;line-height:1.2;touch-action:manipulation;transition:background .12s,color .12s}
+.playback-switch button:hover{background:#42333d;color:#fff}
+.playback-switch button[aria-pressed=true]{background:#8d1836;border-color:#bc5674;color:#fff;box-shadow:0 2px 6px #0003}
+.playback-switch button:active{background:#ad294b}
+.playback-switch button:focus-visible{outline:2px solid #f0b4c7;outline-offset:2px}
+@media(max-width:640px){.playback-controls>span{flex-basis:100%;font-size:11px}.playback-switch{width:100%}.playback-switch button{flex:1;font-size:12px}}

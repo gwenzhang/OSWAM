@@ -71,12 +71,21 @@
   });
   let anyVideos = false;
   let previewRate = 1;
-  document.querySelectorAll('[data-playback]').forEach(button => button.addEventListener('click', () => {
+  const rateButtons = [...document.querySelectorAll('[data-playback]')];
+  function syncPlaybackUI(video) {
+    previewRate = video ? video.playbackRate : previewRate;
+    rateButtons.forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.playback) === previewRate)));
+    const speed = previewRate === 1 ? 'Original speed · 1×' : `Both sides accelerated · ${previewRate}×`;
+    document.querySelector('#playback-label').textContent = speed + (video?.paused ? ' · Paused' : '');
+  }
+  rateButtons.forEach(button => button.addEventListener('click', () => {
     previewRate = Number(button.dataset.playback);
     const video = document.querySelector('#embodied-player video');
-    if (video) video.playbackRate = previewRate;
-    document.querySelectorAll('[data-playback]').forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.playback) === previewRate)));
-    document.querySelector('#playback-label').textContent = previewRate === 1 ? 'Original speed · 1×' : 'Both sides accelerated · 2×';
+    if (video) {
+      video.defaultPlaybackRate = previewRate;
+      video.playbackRate = previewRate;
+    }
+    syncPlaybackUI(video);
   }));
   document.querySelector('#video-results-link')?.addEventListener('click', () => selectTab(document.querySelector('#tab-embodied')));
   for (const group of ['driving', 'embodied']) {
@@ -94,7 +103,19 @@
       const video = document.createElement('video');
       video.controls = true; video.playsInline = true; video.preload = 'metadata';
       video.muted = true;
-      if (group === 'embodied') video.playbackRate = previewRate;
+      if (group === 'embodied') {
+        video.defaultPlaybackRate = previewRate;
+        video.playbackRate = previewRate;
+        video.addEventListener('loadedmetadata', () => {
+          video.playbackRate = previewRate;
+          syncPlaybackUI(video);
+        });
+        for (const event of ['ratechange', 'play', 'pause', 'ended']) {
+          video.addEventListener(event, () => {
+            if (stage.querySelector('video') === video) syncPlaybackUI(video);
+          });
+        }
+      }
       video.setAttribute('aria-label', item.title || `${group} execution video`);
       if (safeUrl(item.poster)) video.poster = safeUrl(item.poster);
       const source = document.createElement('source'); source.src = safeUrl(item.src); source.type = item.type || 'video/mp4';
