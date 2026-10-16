@@ -77,13 +77,14 @@
     const card = document.getElementById(`${group}-demo`);
     const stage = document.getElementById(`${group}-player`);
     const playlist = document.getElementById(`${group}-playlist`);
-    card.querySelector('.demo-state').textContent = 'EXECUTION VIDEO';
+    card.querySelector('.demo-state').textContent = group === 'embodied' ? `${entries.length} SELECTED COMPARISONS · 2× SPEED` : 'EXECUTION VIDEO';
     function showVideo(index) {
       const item = entries[index];
       const previous = stage.querySelector('video'); if (previous) previous.pause();
       stage.replaceChildren();
       const video = document.createElement('video');
       video.controls = true; video.playsInline = true; video.preload = 'metadata';
+      video.muted = true;
       video.setAttribute('aria-label', item.title || `${group} execution video`);
       if (safeUrl(item.poster)) video.poster = safeUrl(item.poster);
       const source = document.createElement('source'); source.src = safeUrl(item.src); source.type = item.type || 'video/mp4';
@@ -105,13 +106,15 @@
       video.addEventListener('play', () => document.querySelectorAll('video').forEach(other => { if (other !== video) other.pause(); }));
     }
     if (entries.length > 1) entries.forEach((item, index) => {
-      const button = document.createElement('button'); button.type = 'button'; button.textContent = item.title || `Video ${index + 1}`;
+      const button = document.createElement('button'); button.type = 'button';
+      if (safeUrl(item.poster)) { const thumbnail = document.createElement('img'); thumbnail.src = safeUrl(item.poster); thumbnail.alt = ''; thumbnail.loading = 'lazy'; button.append(thumbnail); }
+      const label = document.createElement('span'); label.textContent = item.title || `Video ${index + 1}`; button.append(label);
       button.setAttribute('aria-pressed', String(index === 0)); button.addEventListener('click', () => showVideo(index)); playlist.append(button);
     });
     showVideo(0);
   }
   if (anyVideos) {
-    document.querySelector('#demos .section-head > p').textContent = 'Explore execution videos for autonomous driving and embodied control.';
-    document.querySelector('.demo-footnote').textContent = 'Execution videos are shown where available; illustrated panels indicate videos coming soon. Benchmark results are reported separately.';
+    document.querySelector('#demos .section-head > p').textContent = 'Selected real-robot executions. Fast-WAM and OSWAM, side by side.';
+    
   }
 })();

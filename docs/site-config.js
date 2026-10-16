@@ -1,37 +1,55 @@
-/* OSWAM 主页配置。修改此文件后提交到 GitHub，即可更新视频与论文链接。
- * 路径相对于 docs/index.html；不要在路径前加 /，否则会丢失 /OSWAM/ 前缀。
- * 视频建议采用 MP4 (H.264)，也支持浏览器可播放的 WebM 或 HTTPS 直链。
- * src 留空：展示占位图，不请求不存在的文件。添加多个对象即可形成播放列表。
+/* 主页配置：路径相对于 docs/index.html，不要以 / 开头。
+ * embodied 中的视频已经编码为 2 倍速；播放器保持 1x 时即为原视频的 2x。
+ * driving.src 留空，继续显示占位。paperUrl 留空则隐藏论文按钮。
+ * 新增演示可复制列表条目；完整源文件对应关系见 assets/videos/selection-manifest.json。
  */
 window.OSWAM_CONFIG = {
-  paperUrl: "", // 公开 PDF 路径（如 assets/paper.pdf）或真实 arXiv 链接
-  // 留空使用 HTML 中已核对的公开作者与引用；可在此覆盖。
-  authors: [], // 例如 [{name:"Guowen Zhang", marker:"*", url:"https://..."}]
-  affiliation: "The Hong Kong Polytechnic University",
-  bibtex: "", // arXiv 发布后，可替换成官方 BibTeX
-  videos: {
-    driving: [
+  "paperUrl": "",
+  "authors": [],
+  "affiliation": "The Hong Kong Polytechnic University",
+  "bibtex": "",
+  "videos": {
+    "driving": [
       {
-        title: "Autonomous driving",
-        caption: "Current observations to future waypoints.",
-        src: "", // 例如 assets/videos/driving-01.mp4
-        poster: "", // 可选：assets/videos/driving-01.jpg
-        type: "video/mp4",
-        captions: "", // 可选：WebVTT 字幕文件路径
-        captionsLang: "en",
-        captionsLabel: "English"
+        "title": "Autonomous driving",
+        "caption": "Driving execution videos will be added here.",
+        "src": "",
+        "poster": "",
+        "type": "video/mp4"
       }
     ],
-    embodied: [
+    "embodied": [
       {
-        title: "Embodied control",
-        caption: "Visual observations to coordinated actions.",
-        src: "", // 例如 assets/videos/embodied-01.mp4
-        poster: "",
-        type: "video/mp4",
-        captions: "",
-        captionsLang: "en",
-        captionsLabel: "English"
+        "title": "Bread into bowl · 01",
+        "caption": "Fast-WAM: checkpoint 4000, episode 0 · OSWAM: checkpoint 4000, episode 0. Separate recordings; not matched trials.",
+        "src": "assets/videos/bread-01.mp4",
+        "poster": "assets/videos/bread-01.jpg",
+        "type": "video/mp4",
+        "speed": 2
+      },
+      {
+        "title": "Bread into bowl · 02",
+        "caption": "Fast-WAM: checkpoint 4000, episode 3 · OSWAM: checkpoint 4000, episode 3. Separate recordings; not matched trials.",
+        "src": "assets/videos/bread-02.mp4",
+        "poster": "assets/videos/bread-02.jpg",
+        "type": "video/mp4",
+        "speed": 2
+      },
+      {
+        "title": "Object into drawer · 01",
+        "caption": "Fast-WAM: checkpoint 10000, episode 2 · OSWAM: checkpoint 6000, episode 2. Separate recordings; not matched trials.",
+        "src": "assets/videos/drawer-01.mp4",
+        "poster": "assets/videos/drawer-01.jpg",
+        "type": "video/mp4",
+        "speed": 2
+      },
+      {
+        "title": "Object into drawer · 02",
+        "caption": "Fast-WAM: checkpoint 10000, episode 14 · OSWAM: checkpoint 6000, episode 14. Separate recordings; not matched trials.",
+        "src": "assets/videos/drawer-02.mp4",
+        "poster": "assets/videos/drawer-02.jpg",
+        "type": "video/mp4",
+        "speed": 2
       }
     ]
   }

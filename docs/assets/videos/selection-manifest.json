@@ -1,0 +1,102 @@
+[
+  {
+    "id": "bread-01",
+    "task": "place_bread_in_bowl",
+    "episode": 0,
+    "playback_speed": 2,
+    "duration_seconds": 13.05,
+    "output": "bread-01.mp4",
+    "sources": [
+      {
+        "model": "Fast-WAM",
+        "checkpoint": 4000,
+        "path": "results/fastwam/place_bread_in_bowl-step4000/episode0/camera/color/cam_high.mp4",
+        "duration_seconds": 26.1,
+        "sha256": "115f4861a9e156bc9682970509c74bb27bbad9302fcfa7d8318de73b3fc10c09"
+      },
+      {
+        "model": "OSWAM",
+        "checkpoint": 4000,
+        "path": "results/fastwam_student/step4000/place_bread_in_bowl/episode0/camera/color/cam_high.mp4",
+        "duration_seconds": 17.55,
+        "sha256": "613ecacd5298aab260988637ec182f59c2f344abf0bba9b6773c16b54c31ad27"
+      }
+    ],
+    "editing": "Complete cam_high recordings at 2x source speed; shorter recording freezes with an end label; no action cuts; no audio."
+  },
+  {
+    "id": "bread-02",
+    "task": "place_bread_in_bowl",
+    "episode": 3,
+    "playback_speed": 2,
+    "duration_seconds": 14.6,
+    "output": "bread-02.mp4",
+    "sources": [
+      {
+        "model": "Fast-WAM",
+        "checkpoint": 4000,
+        "path": "results/fastwam/place_bread_in_bowl-step4000/episode3/camera/color/cam_high.mp4",
+        "duration_seconds": 29.2,
+        "sha256": "d3865f15a6c475b57c257d7a5cce36ac53c9f10497bec8f5e0279b2ccabef721"
+      },
+      {
+        "model": "OSWAM",
+        "checkpoint": 4000,
+        "path": "results/fastwam_student/step4000/place_bread_in_bowl/episode3/camera/color/cam_high.mp4",
+        "duration_seconds": 20.6,
+        "sha256": "356006480b8a4bafd40d0bac293b7e37f39f82a81a9d829e34ff304d230461ad"
+      }
+    ],
+    "editing": "Complete cam_high recordings at 2x source speed; shorter recording freezes with an end label; no action cuts; no audio."
+  },
+  {
+    "id": "drawer-01",
+    "task": "place_in_drawer",
+    "episode": 2,
+    "playback_speed": 2,
+    "duration_seconds": 9.775,
+    "output": "drawer-01.mp4",
+    "sources": [
+      {
+        "model": "Fast-WAM",
+        "checkpoint": 10000,
+        "path": "results/fastwam/place_in_drawer-step10000/episode2/camera/color/cam_high.mp4",
+        "duration_seconds": 18.95,
+        "sha256": "5ec0cd4dafe97388a3df92ab7bd2cce288c5703ba8b20e223326536b6ff255df"
+      },
+      {
+        "model": "OSWAM",
+        "checkpoint": 6000,
+        "path": "results/fastwam_student/step6000/place_in_drawer/episode2/camera/color/cam_high.mp4",
+        "duration_seconds": 19.55,
+        "sha256": "77b4069bc218fc72bd88fe37c53dccba4c439ebb9b5303f960ec4f92593e38a2"
+      }
+    ],
+    "editing": "Complete cam_high recordings at 2x source speed; shorter recording freezes with an end label; no action cuts; no audio."
+  },
+  {
+    "id": "drawer-02",
+    "task": "place_in_drawer",
+    "episode": 14,
+    "playback_speed": 2,
+    "duration_seconds": 9.325,
+    "output": "drawer-02.mp4",
+    "sources": [
+      {
+        "model": "Fast-WAM",
+        "checkpoint": 10000,
+        "path": "results/fastwam/place_in_drawer-step10000/episode14/camera/color/cam_high.mp4",
+        "duration_seconds": 18.65,
+        "sha256": "da5e14781490b1aedd353ac49e75e981449368328b2ee8de1a8613e89522a451"
+      },
+      {
+        "model": "OSWAM",
+        "checkpoint": 6000,
+        "path": "results/fastwam_student/step6000/place_in_drawer/episode14/camera/color/cam_high.mp4",
+        "duration_seconds": 14.45,
+        "sha256": "6233999e9dac2f918499638aa3d3f3d6b1234c621e5eca54c5eb377598d3cd6b"
+      }
+    ],
+    "editing": "Complete cam_high recordings at 2x source speed; shorter recording freezes with an end label; no action cuts; no audio."
+  }
+]
