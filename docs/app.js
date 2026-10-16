@@ -70,6 +70,15 @@
     }
   });
   let anyVideos = false;
+  let previewRate = 1;
+  document.querySelectorAll('[data-playback]').forEach(button => button.addEventListener('click', () => {
+    previewRate = Number(button.dataset.playback);
+    const video = document.querySelector('#embodied-player video');
+    if (video) video.playbackRate = previewRate;
+    document.querySelectorAll('[data-playback]').forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.playback) === previewRate)));
+    document.querySelector('#playback-label').textContent = previewRate === 1 ? 'Original speed · 1×' : 'Both sides accelerated · 2×';
+  }));
+  document.querySelector('#video-results-link')?.addEventListener('click', () => selectTab(document.querySelector('#tab-embodied')));
   for (const group of ['driving', 'embodied']) {
     const entries = (config.videos?.[group] || []).filter(item => safeUrl(item.src));
     if (!entries.length) continue;
@@ -77,7 +86,7 @@
     const card = document.getElementById(`${group}-demo`);
     const stage = document.getElementById(`${group}-player`);
     const playlist = document.getElementById(`${group}-playlist`);
-    card.querySelector('.demo-state').textContent = group === 'embodied' ? `${entries.length} SELECTED COMPARISONS · 2× SPEED` : 'EXECUTION VIDEO';
+    card.querySelector('.demo-state').textContent = group === 'embodied' ? `${entries.length} SELECTED COMPARISONS · TIMED` : 'EXECUTION VIDEO';
     function showVideo(index) {
       const item = entries[index];
       const previous = stage.querySelector('video'); if (previous) previous.pause();
@@ -85,6 +94,7 @@
       const video = document.createElement('video');
       video.controls = true; video.playsInline = true; video.preload = 'metadata';
       video.muted = true;
+      if (group === 'embodied') video.playbackRate = previewRate;
       video.setAttribute('aria-label', item.title || `${group} execution video`);
       if (safeUrl(item.poster)) video.poster = safeUrl(item.poster);
       const source = document.createElement('source'); source.src = safeUrl(item.src); source.type = item.type || 'video/mp4';
@@ -100,6 +110,19 @@
         const track = document.createElement('track'); track.kind = 'captions'; track.src = safeUrl(item.captions); track.srclang = item.captionsLang || 'en'; track.label = item.captionsLabel || 'English'; video.append(track);
       }
       stage.append(video);
+      if (group === 'embodied') {
+        const summary = card.querySelector('.comparison-summary');
+        summary.replaceChildren();
+        if (item.baselineSeconds && item.oswamSeconds) {
+          const percent = Math.round((1-item.oswamSeconds/item.baselineSeconds)*100);
+          for (const [label,value,cls] of [['Fast-WAM source recording',item.baselineSeconds.toFixed(2)+' s','baseline'],['OSWAM source recording',item.oswamSeconds.toFixed(2)+' s','student'],['Shorter recording',percent+'%','saving']]) {
+            const box = document.createElement('div'); box.className = cls;
+            const number = document.createElement('strong'); number.textContent=value;
+            const name = document.createElement('span'); name.textContent=label;
+            box.append(number,name); summary.append(box);
+          }
+        }
+      }
       card.querySelector('h3').textContent = item.title || (group === 'driving' ? 'Autonomous driving' : 'Embodied control');
       card.querySelector('.demo-caption').textContent = item.caption || '';
       playlist.querySelectorAll('button').forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));

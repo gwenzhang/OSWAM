@@ -1,7 +1,6 @@
-/* 主页配置：路径相对于 docs/index.html，不要以 / 开头。
- * embodied 中的视频已经编码为 2 倍速；播放器保持 1x 时即为原视频的 2x。
- * driving.src 留空，继续显示占位。paperUrl 留空则隐藏论文按钮。
- * 新增演示可复制列表条目；完整源文件对应关系见 assets/videos/selection-manifest.json。
+/* 视频编码为原速 1x，完整保留 4:3 画面；播放器可统一切换 1x/2x。
+ * 视频计时为原视频时间，不代表实测推理延迟。
+ * 自驾 src 留空；源文件信息见 assets/videos/selection-manifest.json。
  */
 window.OSWAM_CONFIG = {
   "paperUrl": "",
@@ -21,35 +20,43 @@ window.OSWAM_CONFIG = {
     "embodied": [
       {
         "title": "Bread into bowl · 01",
-        "caption": "Fast-WAM: checkpoint 4000, episode 0 · OSWAM: checkpoint 4000, episode 0. Separate recordings; not matched trials.",
+        "caption": "Selected independent recordings · Episode 18 · Fast-WAM checkpoint 4000 / OSWAM checkpoint 4000. Recording duration is not model inference latency.",
         "src": "assets/videos/bread-01.mp4",
         "poster": "assets/videos/bread-01.jpg",
         "type": "video/mp4",
-        "speed": 2
+        "speed": 1,
+        "baselineSeconds": 28.25,
+        "oswamSeconds": 16.0
       },
       {
         "title": "Bread into bowl · 02",
-        "caption": "Fast-WAM: checkpoint 4000, episode 3 · OSWAM: checkpoint 4000, episode 3. Separate recordings; not matched trials.",
+        "caption": "Selected independent recordings · Episode 0 · Fast-WAM checkpoint 4000 / OSWAM checkpoint 4000. Recording duration is not model inference latency.",
         "src": "assets/videos/bread-02.mp4",
         "poster": "assets/videos/bread-02.jpg",
         "type": "video/mp4",
-        "speed": 2
+        "speed": 1,
+        "baselineSeconds": 26.1,
+        "oswamSeconds": 17.55
       },
       {
         "title": "Object into drawer · 01",
-        "caption": "Fast-WAM: checkpoint 10000, episode 2 · OSWAM: checkpoint 6000, episode 2. Separate recordings; not matched trials.",
+        "caption": "Selected independent recordings · Episode 19 · Fast-WAM checkpoint 10000 / OSWAM checkpoint 6000. Recording duration is not model inference latency.",
         "src": "assets/videos/drawer-01.mp4",
         "poster": "assets/videos/drawer-01.jpg",
         "type": "video/mp4",
-        "speed": 2
+        "speed": 1,
+        "baselineSeconds": 20.85,
+        "oswamSeconds": 13.3
       },
       {
         "title": "Object into drawer · 02",
-        "caption": "Fast-WAM: checkpoint 10000, episode 14 · OSWAM: checkpoint 6000, episode 14. Separate recordings; not matched trials.",
+        "caption": "Selected independent recordings · Episode 18 · Fast-WAM checkpoint 10000 / OSWAM checkpoint 6000. Recording duration is not model inference latency.",
         "src": "assets/videos/drawer-02.mp4",
         "poster": "assets/videos/drawer-02.jpg",
         "type": "video/mp4",
-        "speed": 2
+        "speed": 1,
+        "baselineSeconds": 19.4,
+        "oswamSeconds": 13.15
       }
     ]
   }
