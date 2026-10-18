@@ -54,8 +54,44 @@
 .playback-switch button:focus-visible{outline:2px solid #f0b4c7;outline-offset:2px}
 @media(max-width:640px){.playback-controls>span{flex-basis:100%;font-size:11px}.playback-switch{width:100%}.playback-switch button{flex:1;font-size:12px}}
 
-/* Five headline metrics, with a balanced final row on small screens. */
-.metrics{grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+/* Benchmark results and compiled latency are shown in adjacent pairs. */
+.metrics{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .metrics p{padding-inline:4px}
 @media(max-width:900px) and (min-width:641px){.metrics strong{font-size:29px}.metrics p{font-size:10px}}
-@media(max-width:640px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}.metrics>div:nth-child(even){border-right:0}.metrics>div:last-child{grid-column:1/-1}}
+@media(max-width:640px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}.metrics>div:nth-child(even){border-right:0}.metrics>div:last-child{grid-column:auto}}
+/* NAVSIM: five visible scenes, one shared time selector. */
+.driving-gallery{margin-bottom:54px;border:1px solid #514650;border-radius:12px;padding:28px;background:#29232b}
+.driving-heading{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:22px}
+.driving-heading .eyebrow{color:#e4a2b8;margin-bottom:9px}
+.driving-heading h3{font-size:25px;letter-spacing:-.6px}
+.driving-count{font-size:10px;letter-spacing:1.5px;color:#d0bdc8;white-space:nowrap}
+.driving-toolbar{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:12px 0 20px}
+.driving-toolbar p{font-size:12px;color:#d6c8d1}
+.driving-time-switch{display:flex;gap:4px;border:1px solid #594952;border-radius:10px;padding:4px;background:#211d23}
+.driving-time-switch button{border:1px solid transparent;background:transparent;color:#d9cdd4;border-radius:6px;min-width:65px;min-height:44px;padding:8px 14px;font-size:12px;font-weight:600}
+.driving-time-switch button:hover{background:#42333d}
+.driving-time-switch button[aria-pressed=true]{background:#8d1836;border-color:#bc5674;color:#fff}
+.driving-scenes{display:grid;gap:22px}
+.driving-scene{border:1px solid #514650;border-radius:9px;overflow:hidden;background:#211d23}
+.driving-scene figcaption{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 17px;border-bottom:1px solid #514650}
+.driving-scene h4{font-size:15px;font-weight:600;margin:0;letter-spacing:0}
+.driving-scene h4 span{color:#e4a2b8;font-size:11px;margin-right:10px}
+.driving-scene figcaption>span{color:#cbbbc6;font-size:11px}
+.driving-columns{display:grid;grid-template-columns:680fr 680fr 384fr;padding:7px 0;font-size:10px;color:#d6c8d1;text-align:center}
+.driving-frame{display:block;width:100%;position:relative;padding:0;border:0;background:#211d23;cursor:zoom-in}
+.driving-frame img{width:100%;height:auto;aspect-ratio:1744/384}
+.driving-frame .zoom-label{font-size:10px;color:#fff;background:#211d23db}
+.driving-note{font-size:11px;color:#cbbbc6;line-height:1.8;margin-top:20px;max-width:940px}
+@media(max-width:640px){.driving-gallery{padding:14px;margin-bottom:32px}.driving-heading{display:block}.driving-heading h3{font-size:21px}.driving-count{display:block;margin-top:10px}.driving-toolbar{flex-wrap:wrap}.driving-scene figcaption{padding:10px;display:block}.driving-scene figcaption>span{display:block;margin-top:4px}.driving-scene h4{font-size:14px}.driving-columns{font-size:8px;line-height:1.3}.driving-frame .zoom-label{font-size:8px;padding:3px 5px}.driving-note{font-size:10px}}
+.driving-scene h4{color:#f4edf1}
+
+/* Native, independent playback for the three driving scenes. */
+.driving-gallery{margin-top:42px;margin-bottom:0}
+.driving-video{display:block;width:100%;height:auto;aspect-ratio:1744/384;background:#151216}
+
+/* Compact the gap left by removal of the Method section. */
+#overview{padding-bottom:32px}
+#results{padding-top:32px}
+.citation-placeholder{min-height:120px}
+.citation-placeholder pre{padding:0}
+@media(max-width:640px){#overview{padding-bottom:24px}#results{padding-top:24px}}

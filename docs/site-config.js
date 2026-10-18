@@ -8,15 +8,7 @@ window.OSWAM_CONFIG = {
   "affiliation": "The Hong Kong Polytechnic University",
   "bibtex": "",
   "videos": {
-    "driving": [
-      {
-        "title": "Autonomous driving",
-        "caption": "Driving execution videos will be added here.",
-        "src": "",
-        "poster": "",
-        "type": "video/mp4"
-      }
-    ],
+    "driving": [],
     "embodied": [
       {
         "title": "Bread into bowl \u00b7 01",

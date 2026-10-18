@@ -25,7 +25,11 @@
     });
   }
   if (config.affiliation) document.querySelector('.affiliation').textContent = config.affiliation;
-  if (config.bibtex) document.querySelector('#bibtex').textContent = config.bibtex;
+  if (config.bibtex?.trim()) {
+    document.querySelector('#bibtex').textContent = config.bibtex;
+    document.querySelector('#copy-citation').hidden = false;
+    document.querySelector('.citation-box').classList.remove('citation-placeholder');
+  }
   const tabs = Array.from(document.querySelectorAll('[data-result]'));
   function selectTab(tab) {
     tabs.forEach(item => {
@@ -49,6 +53,9 @@
   const dialog = document.querySelector('#figure-dialog');
   document.querySelectorAll('[data-zoom]').forEach(button => button.addEventListener('click', () => {
     const img = document.querySelector('#zoom-image'); img.src = button.dataset.zoom; img.alt = button.querySelector('img').alt;
+    const drivingScene = button.closest('[data-scene]');
+    dialog.querySelector('.dialog-toolbar span').textContent = drivingScene ? `${drivingScene.querySelector('h4').textContent.trim()} · Top / middle / bottom: 0 / 2 / 4 s` : 'Research figure';
+    if (drivingScene) img.alt = `${drivingScene.querySelector('h4').textContent.trim()}: top row 0 s, middle row 2 s, bottom row 4 s. Recorded view, generated view, and BEV in each row.`;
     dialog.showModal(); document.body.classList.add('modal-open');
   }));
   document.querySelector('#close-figure').addEventListener('click', () => dialog.close());
@@ -69,7 +76,6 @@
       document.querySelector('#copy-status').textContent = 'Citation selected. Press Control C or Command C to copy.';
     }
   });
-  let anyVideos = false;
   let previewRate = 1;
   const rateButtons = [...document.querySelectorAll('[data-playback]')];
   function syncPlaybackUI(video) {
@@ -87,11 +93,9 @@
     }
     syncPlaybackUI(video);
   }));
-  document.querySelector('#video-results-link')?.addEventListener('click', () => selectTab(document.querySelector('#tab-embodied')));
-  for (const group of ['driving', 'embodied']) {
+  for (const group of ['embodied']) {
     const entries = (config.videos?.[group] || []).filter(item => safeUrl(item.src));
     if (!entries.length) continue;
-    anyVideos = true;
     const card = document.getElementById(`${group}-demo`);
     const stage = document.getElementById(`${group}-player`);
     const playlist = document.getElementById(`${group}-playlist`);
@@ -135,7 +139,7 @@
       const caption = card.querySelector('.demo-caption');
       if (caption) caption.textContent = item.caption || '';
       playlist.querySelectorAll('button').forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
-      video.addEventListener('play', () => document.querySelectorAll('video').forEach(other => { if (other !== video) other.pause(); }));
+      video.addEventListener('play', () => document.querySelectorAll('#embodied-player video').forEach(other => { if (other !== video) other.pause(); }));
     }
     if (entries.length > 1) entries.forEach((item, index) => {
       const button = document.createElement('button'); button.type = 'button';
@@ -144,9 +148,5 @@
       button.setAttribute('aria-pressed', String(index === 0)); button.addEventListener('click', () => showVideo(index)); playlist.append(button);
     });
     showVideo(0);
-  }
-  if (anyVideos) {
-    document.querySelector('#demos .section-head > p').textContent = 'Selected real-robot executions. Fast-WAM and OSWAM, side by side.';
-    
   }
 })();

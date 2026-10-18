@@ -1,0 +1,69 @@
+{
+  "source_archive": "navsim_video25_50_no_text.zip",
+  "review": "All 50 end frames screened; selected scenes reviewed at 0, 2, 4 s. Visual clarity and scenario diversity prioritized; not a quantitative evaluation.",
+  "configuration": {
+    "action_steps": 2,
+    "video_steps": 25,
+    "mode": "open-loop",
+    "initial_observations": 1
+  },
+  "scenes": [
+    {
+      "id": "31",
+      "file": "31_lane-following_comparison.mp4",
+      "category": "lane-following",
+      "token": "3971312f7bb55ea2",
+      "log": "2021.06.28.20.24.43_veh-38_00369_00601",
+      "map": "us-nv-las-vegas-strip",
+      "ade_m": 0.2075991928577423,
+      "fde_m": 0.4205842614173889,
+      "video_psnr_db": 22.34278907261276,
+      "overview_page": 4,
+      "overview_row": 1,
+      "overview_column": 1,
+      "title": "Lane following",
+      "subtitle": "Urban traffic",
+      "selection_reason": "Buildings, lane markings and leading vehicles remain comparatively coherent.",
+      "source_sha256": "432fdbbbe70cdf173f81f124164a48ce1d4b83ee57529b4850ddce0aea9bb2ad",
+      "display": "Original 4.5-second MP4, unchanged; 1x playback, muted looping with native controls."
+    },
+    {
+      "id": "07",
+      "file": "07_left-turn_comparison.mp4",
+      "category": "left-turn",
+      "token": "f3e09f0670d25426",
+      "log": "2021.06.28.20.24.43_veh-38_03385_04952",
+      "map": "us-nv-las-vegas-strip",
+      "ade_m": 0.18613724410533905,
+      "fde_m": 0.10313902050256729,
+      "video_psnr_db": 20.973901658635196,
+      "overview_page": 1,
+      "overview_row": 4,
+      "overview_column": 1,
+      "title": "Left turn",
+      "subtitle": "Gentle urban turn",
+      "selection_reason": "Clear leftward trajectory with comparatively stable building structure.",
+      "source_sha256": "1c040d371e6e4cd5e4e831fa1bcad1b15283c5b7f3f3758c809fcd1ba3c4ec51",
+      "display": "Original 4.5-second MP4, unchanged; 1x playback, muted looping with native controls."
+    },
+    {
+      "id": "26",
+      "file": "26_right-turn_comparison.mp4",
+      "category": "right-turn",
+      "token": "b3509fd31f495cfb",
+      "log": "2021.06.03.12.02.06_veh-35_00233_00609",
+      "map": "us-nv-las-vegas-strip",
+      "ade_m": 0.14225253462791443,
+      "fde_m": 0.2067568451166153,
+      "video_psnr_db": 18.761582400867,
+      "overview_page": 3,
+      "overview_row": 3,
+      "overview_column": 2,
+      "title": "Right turn",
+      "subtitle": "Junction entry",
+      "selection_reason": "The clearer of the two right-turn examples; curb and junction geometry remain recognizable.",
+      "source_sha256": "00c993276a972671089ac77f27f1cb128ca864882b8904f89e05abf25c819fab",
+      "display": "Original 4.5-second MP4, unchanged; 1x playback, muted looping with native controls."
+    }
+  ]
+}
